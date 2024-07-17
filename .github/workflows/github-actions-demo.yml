@@ -9,7 +9,6 @@ on:
 env:
   CLIENT_ID: ${{ secrets.CLIENT_ID }}
   CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-
 jobs:
   Trigger-Test:
     runs-on: ubuntu-latest

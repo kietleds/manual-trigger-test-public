@@ -22,7 +22,7 @@ jobs:
       - run: export NODE_OPTIONS="--max-old-space-size=3072"
       - run: yarn install
       - run: yarn build
-      - run: apt update && apt install -y gettext
+      - run: sudo apt update && sudo apt install -y gettext
       - run: echo "success"
       - run: echo $CLIENT_ID
       - run: echo $CLIENT_SECRET

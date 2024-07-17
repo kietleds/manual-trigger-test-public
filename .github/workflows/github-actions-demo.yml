@@ -7,10 +7,9 @@ on:
       - develop
 
 env:
-  # CLIENT_ID: ${{ secrets.CLIENT_ID }}
-  # CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-  CLIENT_ID: xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=
-  CLIENT_SECRET: 001bf08a7cab4aaa28b8ad6d9eae4e4aea909b44e4aad1f431d2ec1e19a9b8ca
+  CLIENT_ID: ${{ secrets.CLIENT_ID }}
+  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+
 jobs:
   Trigger-Test:
     runs-on: ubuntu-latest

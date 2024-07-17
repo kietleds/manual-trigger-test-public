@@ -26,5 +26,5 @@ jobs:
       - run: echo "success"
       - run: echo $CLIENT_ID
       - run: echo $CLIENT_SECRET
-      - run: export token=$(curl -H "Content-Type:application/json" -X POST --data "{\"clientId\":\"$CLIENT_ID\",\"clientSecret\":\"$CLIENT_SECRET\"}" https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/v1/apikeys/authenticate| tr -d '"')
+      - run: token=$(curl -H "Content-Type:application/json" -X POST --data "{\"clientId\":\"$CLIENT_ID\",\"clientSecret\":\"$CLIENT_SECRET\"}" https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/v1/apikeys/authenticate| tr -d '"')
       - run: echo $token

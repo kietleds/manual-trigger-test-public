@@ -6,6 +6,15 @@ on:
       - main
       - develop
   workflow_dispatch:
+    inputs:
+      projectKey:
+        description: The key of project
+        type: string
+        required: true
+      testExecutionKey:
+        description: The key of test execution
+        type: string
+        required: false
 
 env:
   CLIENT_ID: ${{ secrets.CLIENT_ID }}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="0.207">
+  <testsuite
+    name="add function"
+    errors="0"
+    failures="0"
+    skipped="0"
+    timestamp="2024-07-22T06:45:37"
+    time="0.183"
+    tests="5"
+  >
+    <testcase
+      classname="add function adds 0 + 1 to equal 1"
+      name="add function adds 0 + 1 to equal 1"
+      time="0.001"
+    >
+    </testcase>
+    <testcase
+      classname="add function adds 1 + 1 to equal 2"
+      name="add function adds 1 + 1 to equal 2"
+      time="0"
+    >
+    </testcase>
+    <testcase
+      classname="add function adds 2 + 1 to equal 3"
+      name="add function adds 2 + 1 to equal 3"
+      time="0"
+    >
+    </testcase>
+    <testcase
+      classname="add function adds 3 + 1 to equal 4"
+      name="add function adds 3 + 1 to equal 4"
+      time="0"
+    >
+    </testcase>
+    <testcase
+      classname="add function adds 4 + 1 to equal 5"
+      name="add function adds 4 + 1 to equal 5"
+      time="0.001"
+    >
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -7,6 +7,9 @@ on:
       - develop
   workflow_dispatch:
     inputs:
+      agile_test_workflow_run_id:
+        description: "run identifier"
+        required: false
       PROJECT_KEY:
         description: The key of project
         type: string
@@ -21,6 +24,13 @@ env:
   CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
 
 jobs:
+  agile_test_workflow_run_id:
+    name: Workflow ID Provider
+    runs-on: ubuntu-latest
+    steps:
+      - name: ${{github.event.inputs.id}}
+        run: echo run identifier ${{ inputs.id }}
+
   Trigger-Test:
     runs-on: ubuntu-latest
     steps:

@@ -42,4 +42,4 @@ jobs:
       - run: echo ${{ env.TOKEN }}
       - run: cat test-reports/junit-report.xml
       - run: curl -X 'GET' 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/milestones?projectId=10003' -H 'accept:application/json' -H 'authorization:JWT ${{ env.TOKEN }}'
-      - run: curl -H "Content-Type:text/xml" -H "Authorization:JWT ${{ env.TOKEN }}" --data @test-reports/junit-report.xml "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-results/junit?projectKey=${{ inputs.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}"
+      # - run: curl -H "Content-Type:text/xml" -H "Authorization:JWT ${{ env.TOKEN }}" --data @test-reports/junit-report.xml "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-results/junit?projectKey=${{ inputs.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}"

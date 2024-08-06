@@ -3,12 +3,6 @@ export default {
   verbose: true, // Show detailed output,
   reporters: [
     "default",
-    [
-      "jest-junit",
-      {
-        outputDirectory: "test-reports", // Output directory for the XML report
-        outputName: "junit-report.xml", // Name of the XML report file
-      },
-    ],
+    ["jest-junit", { outputDirectory: "reports", outputName: "junit.xml" }],
   ],
 };

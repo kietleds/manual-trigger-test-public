@@ -47,9 +47,8 @@ jobs:
       - run: echo $CLIENT_SECRET
       - run: echo ${{ inputs.PROJECT_KEY }}
       - run: echo ${{ inputs.TEST_EXECUTION_KEY }}
-      - run: curl -H "Content-Type:application/json" -X POST --data "{\"clientId\":\"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=\",\"clientSecret\":\"001bf08a7cab4aaa28b8ad6d9eae4e4aea909b44e4aad1f431d2ec1e19a9b8ca\"}" https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/v1/apikeys/authenticate| tr -d '"'
       - run: echo TOKEN=$(curl -H "Content-Type:application/json" -X POST --data "{\"clientId\":\"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=\",\"clientSecret\":\"001bf08a7cab4aaa28b8ad6d9eae4e4aea909b44e4aad1f431d2ec1e19a9b8ca\"}" https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/v1/apikeys/authenticate| tr -d '"') >> $GITHUB_ENV
       - run: echo ${{ env.TOKEN }}
       - run: cat test-reports/junit-report.xml
-      - run: curl -X 'GET' 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/milestones?projectId=10003' -H 'accept:application/json' -H 'authorization:JWT ${{ env.TOKEN }}'
-      # - run: curl -H "Content-Type:text/xml" -H "Authorization:JWT ${{ env.TOKEN }}" --data @test-reports/junit-report.xml "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-results/junit?projectKey=${{ inputs.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}"
+      # - run: curl -X 'GET' 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/milestones?projectId=10003' -H 'accept:application/json' -H 'authorization:JWT ${{ env.TOKEN }}'
+      - run: curl -H "Content-Type:text/xml" -H "Authorization:JWT ${{ env.TOKEN }}" --data @test-reports/junit-report.xml "https://ag-upload-result-dq544rs.ue.gateway.dev/test-results/junit&projectKey=${{ inputs.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}"

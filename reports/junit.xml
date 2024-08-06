@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="5" failures="1" errors="0" time="0.106">
+  <testsuite name="add function" errors="0" failures="1" skipped="0" timestamp="2024-08-06T03:52:07" time="0.09" tests="5">
+    <testcase classname="add function adds 0 + 1 to equal 0" name="add function adds 0 + 1 to equal 0" time="0.002">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 0
+Received: 1
+    at Object.&lt;anonymous&gt; (/Users/kietle/Documents/projects/manual-trigger-test-public/src/__test__/App.test.js:14:25)
+    at Promise.then.completed (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/utils.js:231:10)
+    at _callCircusTest (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/run.js:316:40)
+    at async _runTest (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/run.js:252:3)
+    at async _runTestsForDescribeBlock (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/run.js:126:9)
+    at async _runTestsForDescribeBlock (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/run.js:121:9)
+    at async run (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/run.js:71:3)
+    at async runAndTransformResultsToJestFormat (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:122:21)
+    at async jestAdapter (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
+    at async runTestInternal (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-runner/build/runTest.js:367:16)
+    at async runTest (/Users/kietle/Documents/projects/manual-trigger-test-public/node_modules/jest-runner/build/runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="add function adds 1 + 1 to equal 2" name="add function adds 1 + 1 to equal 2" time="0">
+    </testcase>
+    <testcase classname="add function adds 2 + 1 to equal 3" name="add function adds 2 + 1 to equal 3" time="0">
+    </testcase>
+    <testcase classname="add function adds 3 + 1 to equal 4" name="add function adds 3 + 1 to equal 4" time="0">
+    </testcase>
+    <testcase classname="add function adds 4 + 1 to equal 5" name="add function adds 4 + 1 to equal 5" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>

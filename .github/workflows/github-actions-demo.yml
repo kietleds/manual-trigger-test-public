@@ -38,7 +38,9 @@ jobs:
       - run: echo ${{ inputs.PROJECT_KEY }}
       - run: echo ${{ inputs.TEST_EXECUTION_KEY }}
       - run: cat reports/junit.xml
-      - run: export token=$(curl 'https://dev.agiletest.atlas.devsamurai.com/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')
-      - run: echo $token
-      - run: curl -H "Content-Type:text/xml" -H "Authorization:JWT ${{ env.TOKEN }}" --data @reports/junit.xml "https://dev.api.agiletest.app/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}"
-      - run: echo "done"
+      - name: test
+        run: |
+          export token=$(curl 'https://dev.agiletest.atlas.devsamurai.com/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')
+          echo $token
+          curl -H "Content-Type:text/xml" -H "Authorization:JWT ${{ env.TOKEN }}" --data @reports/junit.xml "https://dev.api.agiletest.app/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}"
+          echo "done"

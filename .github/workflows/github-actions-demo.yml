@@ -36,6 +36,7 @@ jobs:
       - run: echo $CLIENT_ID
       - run: echo $CLIENT_SECRET
       - run: echo ${{ inputs.PROJECT_KEY }}
+      - run: echo ${{ vars.PROJECT_KEY }}
       - run: echo ${{ inputs.TEST_EXECUTION_KEY }}
       - run: cat reports/junit.xml
       - name: test

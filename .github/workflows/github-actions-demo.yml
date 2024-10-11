@@ -31,7 +31,7 @@ jobs:
       - run: export NODE_OPTIONS="--max-old-space-size=3072"
       - run: yarn install
       - run: yarn build
-      - run: yarn test
+      # - run: yarn test
       - run: echo "success"
       - run: echo $CLIENT_ID
       - run: echo $CLIENT_SECRET

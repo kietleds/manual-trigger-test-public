@@ -58,8 +58,8 @@ jobs:
           # Get authentication token
           export token=$(curl 'https://dev.agiletest.atlas.devsamurai.com/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')
           echo $token
-          # # Send the result data to the specified endpoint
-          # curl -H "Content-Type: application/json" \
-          #      -H "Authorization: JWT $token" \
-          #      --data '{ "tool": "github", "result": "'"$RESULT"'"  }' \
-          #      "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-executions/$TEST_EXECUTION_KEY/pipeline/history?projectKey=$PROJECT_KEY"
+          # Send the result data to the specified endpoint
+          curl -H "Content-Type: application/json" \
+               -H "Authorization: JWT $token" \
+               --data '{ "tool": "github", "result": "'"$RESULT"'"  }' \
+               "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-executions/${TEST_EXECUTION_KEY}/pipeline/history?projectKey=${PROJECT_KEY}"

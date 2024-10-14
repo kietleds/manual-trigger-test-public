@@ -1,9 +1,9 @@
-const array = Array(5)
+const array = Array(300)
   .fill(0)
   .map((_, index) => ({
     a: index,
     b: 1,
-    expected: Math.random() < 0.8 ? index + 1 : index,
+    expected: Math.random() < 0 ? index + 1 : index,
   }));
 
 const add = (a, b) => a + b;

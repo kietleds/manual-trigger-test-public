@@ -38,7 +38,7 @@ jobs:
       - run: echo ${{ inputs.PROJECT_KEY }}
       - run: echo ${{ vars.PROJECT_KEY }}
       - run: echo ${{ inputs.TEST_EXECUTION_KEY }}
-      - run: cat reports/junit.xml
+      # - run: cat reports/junit.xml
       # - name: test
       #   run: |
       #     export token=$(curl 'https://dev.agiletest.atlas.devsamurai.com/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')
@@ -56,13 +56,10 @@ jobs:
           fi
 
           # Get authentication token
-          export token=$(curl -H "Content-Type: application/json" \
-                       -X POST \
-                       --data '{ "clientId": "'"$CLIENT_ID"'", "clientSecret": "'"$CLIENT_SECRET"'" }' \
-                       https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate | tr -d '"')
+          export token=$(curl 'https://dev.agiletest.atlas.devsamurai.com/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')
           echo $token
-          # Send the result data to the specified endpoint
-          curl -H "Content-Type: application/json" \
-               -H "Authorization: JWT $token" \
-               --data '{ "tool": "github", "result": "'"$RESULT"'"  }' \
-               "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-executions/$TEST_EXECUTION_KEY/pipeline/history?projectKey=$PROJECT_KEY"
+          # # Send the result data to the specified endpoint
+          # curl -H "Content-Type: application/json" \
+          #      -H "Authorization: JWT $token" \
+          #      --data '{ "tool": "github", "result": "'"$RESULT"'"  }' \
+          #      "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-executions/$TEST_EXECUTION_KEY/pipeline/history?projectKey=$PROJECT_KEY"

@@ -38,6 +38,11 @@ jobs:
       - run: echo ${{ inputs.PROJECT_KEY }}
       - run: echo ${{ vars.PROJECT_KEY }}
       - run: echo ${{ inputs.TEST_EXECUTION_KEY }}
+      - name: Log Owner, Repo, and Workflow ID
+        run: |
+          echo "Owner/Repo: ${{ github.repository }}"
+          echo "Workflow Name: ${{ github.workflow }}"
+          echo "Workflow Run ID: ${{ github.run_id }}"
       # - run: cat reports/junit.xml
       # - name: test
       #   run: |
@@ -50,9 +55,9 @@ jobs:
       - name: After Script
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            RESULT="SUCCESS"
+            RESULT="success"
           else
-            RESULT="FAILED"
+            RESULT="failed"
           fi
 
           # Get authentication token

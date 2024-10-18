@@ -54,7 +54,7 @@ jobs:
       - run: echo ${{ vars.PROJECT_KEY }}
 
       - name: After Script
-        if: always()
+        # if: always()
         run: |
           echo "Job Status: ${{ job.status }}"
           echo "Job ID: ${{ github.run_id }}"

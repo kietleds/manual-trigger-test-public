@@ -54,29 +54,8 @@ jobs:
       - run: echo ${{ vars.PROJECT_KEY }}
 
       - name: After Script
-        # if: always()
         run: |
-          echo "Job Status: ${{ job.status }}"
-          echo "Job ID: ${{ github.run_id }}"
-          echo "Job Name: ${{ github.job }}"
-          echo "Workflow Name: ${{ github.workflow }}"
-          echo "Repository: ${{ github.repository }}"
-          echo "Event Name: ${{ github.event_name }}"
-          echo "Branch: ${{ github.ref }}"
-          echo "Commit SHA: ${{ github.sha }}"
-          echo "Actor: ${{ github.actor }}"
-          echo "Workflow Run Number: ${{ github.run_number }}"
-          echo "Workflow Triggered by: ${{ github.event_name }}"
-
-
-
-          echo "Job Status: ${{ job.status }}"
-          if [ "${{ job.status }}" == "success" ]; then
-            RESULT="success"
-          else
-            RESULT="failed"
-          fi
-          echo $RESULT
+          if [ "${{ job.status }}" == "success" ]; then RESULT="success" else RESULT="failed" fi
 
           # Get authentication token
           export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"015522653a0f81a9a7670c6840fc6a7f7d8ba8c1cea63489814fe5d877d2ac88"}' | tr -d '"')

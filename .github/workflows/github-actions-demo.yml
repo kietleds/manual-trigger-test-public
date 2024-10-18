@@ -41,8 +41,8 @@ jobs:
       - name: Log Owner, Repo, and Workflow ID
         run: |
           echo "Owner/Repo: ${{ github.repository }}"
-          echo "Workflow Name: ${{ github.workflow }}"
           echo "Workflow Run ID: ${{ github.run_id }}"
+
       # - run: cat reports/junit.xml
       # - name: test
       #   run: |
@@ -54,14 +54,16 @@ jobs:
       - run: echo ${{ vars.PROJECT_KEY }}
       - name: After Script
         run: |
+          echo "Job Status: ${{ job.status }}"
           if [ "${{ job.status }}" == "success" ]; then
             RESULT="success"
           else
             RESULT="failed"
           fi
+          echo $RESULT
 
           # Get authentication token
           export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"015522653a0f81a9a7670c6840fc6a7f7d8ba8c1cea63489814fe5d877d2ac88"}' | tr -d '"')
           echo $token
           # Send the result data to the specified endpoint
-          curl -H "Content-Type:application/json" -H "Authorization:JWT $token" --data '{ "tool":"github", "result":"'"$RESULT"'"  }' "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-executions/${TEST_EXECUTION_KEY}/pipeline/history?projectKey=${PROJECT_KEY}"
+          curl -H "Content-Type:application/json" -H "Authorization:JWT $token" --data '{ "tool":"github", "result":"'"$RESULT"'"  }' "https://kiet-le-dss-macbook-air.tail305ff.ts.net/ds/test-executions/${{ inputs.TEST_EXECUTION_KEY }}/pipeline/history?projectKey=${{ inputs.PROJECT_KEY }}"

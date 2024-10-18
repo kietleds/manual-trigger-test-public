@@ -67,7 +67,6 @@ jobs:
           echo "Actor: ${{ github.actor }}"
           echo "Workflow Run Number: ${{ github.run_number }}"
           echo "Workflow Triggered by: ${{ github.event_name }}"
-          echo "Job started at: ${{ steps.<step-id>.started_at }}"
 
 
 

@@ -53,6 +53,11 @@ jobs:
       - run: echo ${{ inputs.PROJECT_KEY }}
       - run: echo ${{ vars.PROJECT_KEY }}
 
+      - name: Run test
+        run: |
+          export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"015522653a0f81a9a7670c6840fc6a7f7d8ba8c1cea63489814fe5d877d2ac88"}' | tr -d '"')
+          echo $token
+
       - name: After Script
         run: |
           if [ "${{ job.status }}" == "success" ]; then
@@ -61,6 +66,9 @@ jobs:
             RESULT="failed"
           fi
           echo $RESULT
+
+          echo "Owner/Repo: ${{ github.repository }}"
+          echo "Workflow Run ID: ${{ github.run_id }}"
 
           # Get authentication token
           export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"015522653a0f81a9a7670c6840fc6a7f7d8ba8c1cea63489814fe5d877d2ac88"}' | tr -d '"')

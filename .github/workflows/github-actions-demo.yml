@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - develop
   workflow_dispatch:
     inputs:
       PROJECT_KEY:
@@ -67,7 +66,7 @@ jobs:
       - name: test
         run: |
           echo ${{ inputs.milestoneId }} ${{ inputs.testPlanKeys }} ${{ inputs.fixVersions }} ${{ inputs.testEnvironments }} ${{ inputs.revision }}
-          echo milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}
+          # echo milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}
       - name: Run test
         run: |
           export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')

@@ -15,6 +15,26 @@ on:
         description: The key of test execution
         type: string
         required: false
+      milestoneId:
+        description: The milestone id
+        type: string
+        required: false
+      testPlanKeys:
+        description: The test plan keys
+        type: string
+        required: false
+      fixVersions:
+        description: The fix versions
+        type: string
+        required: false
+      testEnvironments:
+        description: The test environments
+        type: string
+        required: false
+      revision:
+        description: The revision
+        type: string
+        required: false
 
 env:
   CLIENT_ID: ${{ secrets.CLIENT_ID }}

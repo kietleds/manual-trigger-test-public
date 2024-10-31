@@ -64,7 +64,10 @@ jobs:
           echo "Workflow Run ID: ${{ github.run_id }}"
 
       # - run: cat reports/junit.xml
-      - run: echo ${{ inputs.milestoneId }} ${{ inputs.testPlanKeys }} ${{ inputs.fixVersions }} ${{ inputs.testEnvironments }} ${{ inputs.revision }}
+      - name: test
+        run: |
+          echo ${{ inputs.milestoneId }} ${{ inputs.testPlanKeys }} ${{ inputs.fixVersions }} ${{ inputs.testEnvironments }} ${{ inputs.revision }}
+          echo milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}
       - name: Run test
         run: |
           export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')

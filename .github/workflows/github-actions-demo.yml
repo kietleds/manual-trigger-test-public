@@ -69,7 +69,7 @@ jobs:
           # echo milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}
       - name: Run test
         run: |
-          export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"'"$CLIENT_ID"'","clientSecret":"'"$CLIENT_SECRET"'"}' | tr -d '"')
+          export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"015522653a0f81a9a7670c6840fc6a7f7d8ba8c1cea63489814fe5d877d2ac88"}' | tr -d '"')
           echo $token
 
           # curl -H "Content-Type:text/xml" -H "Authorization:JWT $token" --data @reports/junit.xml "https://e7fc-116-102-75-169.ngrok-free.app/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY || vars.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}&milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}"

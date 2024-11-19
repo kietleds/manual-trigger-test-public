@@ -72,7 +72,7 @@ jobs:
           export token=$(curl 'https://kiet-le-dss-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"015522653a0f81a9a7670c6840fc6a7f7d8ba8c1cea63489814fe5d877d2ac88"}' | tr -d '"')
           echo $token
 
-          curl -v -H "Content-Type:text/xml" -H "Authorization:JWT $token" --data @reports/junit.xml "https://9478-42-115-27-110.ngrok-free.app/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY || vars.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}&milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}"
+          curl -v -H "Content-Type:text/xml" -H "Authorization:JWT $token" --data @reports/junit.xml "https://8fd3-2405-4802-90c5-7f90-591a-8c7e-1d46-a50d.ngrok-free.app/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY || vars.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}&milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}"
 
           echo "done"
       - run: echo ${{ inputs.PROJECT_KEY }}

@@ -51,50 +51,11 @@ jobs:
       - run: export NODE_OPTIONS="--max-old-space-size=3072"
       - run: yarn install
       - run: yarn build
-      # - run: yarn test
-      - run: echo "success"
-      - run: echo $CLIENT_ID
-      - run: echo $CLIENT_SECRET
-      - run: echo ${{ inputs.PROJECT_KEY }}
-      - run: echo ${{ vars.PROJECT_KEY }}
-      - run: echo ${{ inputs.TEST_EXECUTION_KEY }}
-      - name: Log Owner, Repo, and Workflow ID
-        run: |
-          echo "Owner/Repo: ${{ github.repository }}"
-          echo "Workflow Run ID: ${{ github.run_id }}"
-
-      # - run: cat reports/junit.xml
-      - name: test
-        run: |
-          echo ${{ inputs.milestoneId }} ${{ inputs.testPlanKeys }} ${{ inputs.fixVersions }} ${{ inputs.testEnvironments }} ${{ inputs.revision }}
-          # echo milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}
+      - run: yarn test
       - name: Run test
         run: |
-          export token=$(curl 'https://kietleds.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"a92e8996e3f8ec6b493c9c4abc0c769a0b6b83ba6b86557cb676265af17d87a2"}' | tr -d '"')
-          echo $token
-
-          echo "https://kietleds.tail305ff.ts.net/parser/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY || vars.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}&milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}"
+          export token=$(curl 'https://kietleds.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"${{ env.CLIENT_ID }}","clientSecret":"${{ env.CLIENT_SECRET }}"}' | tr -d '"')
 
           curl -v -H "Content-Type:text/xml" -H "Authorization:JWT $token" --data @reports/junit.xml "https://kietleds.tail305ff.ts.net/parser/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY || vars.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}&milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}"
 
           echo "done"
-      - run: echo ${{ inputs.PROJECT_KEY }}
-      - run: echo ${{ vars.PROJECT_KEY }}
-
-      - name: After Script
-        run: |
-          if [ "${{ job.status }}" == "success" ]; then
-            RESULT="success"
-          else
-            RESULT="failed"
-          fi
-          echo $RESULT
-
-          echo "Owner/Repo: ${{ github.repository }}"
-          echo "Workflow Run ID: ${{ github.run_id }}"
-
-          # Get authentication token
-          export token=$(curl 'https://kietleds.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"xaIkb2y6ASAKJ15sfJYLZFKsxO9uoWZ2mOtXNEepyTk=","clientSecret":"a92e8996e3f8ec6b493c9c4abc0c769a0b6b83ba6b86557cb676265af17d87a2"}' | tr -d '"')
-          echo $token
-          # Send the result data to the specified endpoint
-          curl -H "Content-Type:application/json" -H "Authorization:JWT $token" --data '{ "repository": "'"${{ github.repository }}"'", "runId": "'"${{ github.run_id }}"'", "tool":"github", "result":"'"$RESULT"'"  }' "https://kietleds.tail305ff.ts.net/ds/test-executions/${{ inputs.TEST_EXECUTION_KEY }}/pipeline/history?projectKey=${{ inputs.PROJECT_KEY }}"

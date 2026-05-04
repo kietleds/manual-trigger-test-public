@@ -1,28 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuites
-  id=""
-  name=""
-  tests="2"
-  failures="0"
-  skipped="0"
-  errors="0"
-  time="1.251732"
->
-  <testsuite
-    name="login"
-    timestamp="2024-01-23T03:46:55.103Z"
-    hostname="chromium"
-    tests="2"
-    failures="0"
-    skipped="0"
-    time="1.644"
-    errors="0"
-  >
-    <testcase
-      name="should throw error when username is missing"
-      classname="login"
-      time="0.929"
-    >
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="2" failures="0" errors="0" time="0.113">
+  <testsuite name="add function" errors="0" failures="0" skipped="0" timestamp="2026-05-04T09:25:22" time="0.084" tests="2">
+    <testcase classname="add function adds 1 + 2 to equal 3" name="add function adds 1 + 2 to equal 3" time="0.001">
+    </testcase>
+    <testcase classname="add function adds 3 + 4 to equal 7" name="add function adds 3 + 4 to equal 7" time="0">
     </testcase>
   </testsuite>
 </testsuites>

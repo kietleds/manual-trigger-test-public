@@ -1,15 +1,12 @@
-const array = Array(300)
-  .fill(0)
-  .map((_, index) => ({
-    a: index,
-    b: 1,
-    expected: Math.random() < 0 ? index + 1 : index,
-  }));
+const array = [
+  [1, 2, 3],
+  [3, 4, 7],
+];
 
 const add = (a, b) => a + b;
 
 describe("add function", () => {
-  array.forEach(({ a, b, expected }) => {
+  array.forEach(([a, b, expected]) => {
     test(`adds ${a} + ${b} to equal ${expected}`, () => {
       expect(add(a, b)).toBe(expected);
     });

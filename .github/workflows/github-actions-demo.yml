@@ -51,8 +51,10 @@ jobs:
       - run: export NODE_OPTIONS="--max-old-space-size=3072"
       - run: yarn install
       - run: yarn build
-      - run: yarn test
-      - name: Run test
+      - name: Run tests
+        run: yarn test
+        continue-on-error: true
+      - name: Upload test results
         run: |
           export token=$(curl 'https://kiets-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"${{ env.CLIENT_ID }}","clientSecret":"${{ env.CLIENT_SECRET }}"}' | tr -d '"')
           curl -v -H "Content-Type:text/xml" -H "Authorization:JWT $token" --data @reports/junit.xml "https://kiets-macbook-air.tail305ff.ts.net/parser/ds/test-executions/junit?projectKey=${{ inputs.PROJECT_KEY || vars.PROJECT_KEY }}&testExecutionKey=${{ inputs.TEST_EXECUTION_KEY }}&milestoneId=${{ inputs.milestoneId }}&testEnvironments=${{ inputs.testEnvironments }}&testPlanKeys=${{ inputs.testPlanKeys }}&revision=${{ inputs.revision }}&fixVersions=${{ inputs.fixVersions }}"

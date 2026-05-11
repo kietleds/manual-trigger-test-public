@@ -1,6 +1,6 @@
 const array = [
   [1, 2, 3],
-  [3, 4, 7],
+  [3, 4, 8],
 ];
 
 const add = (a, b) => a + b;

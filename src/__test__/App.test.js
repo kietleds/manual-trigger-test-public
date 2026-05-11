@@ -7,7 +7,7 @@ const add = (a, b) => a + b;
 
 describe("add function", () => {
   array.forEach(([a, b, expected]) => {
-    test(`adds ${a} + ${b} to equal ${expected}`, () => {
+    test(`adds ${a} + ${b}`, () => {
       expect(add(a, b)).toBe(expected);
     });
   });

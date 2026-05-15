@@ -51,9 +51,7 @@ jobs:
       - run: export NODE_OPTIONS="--max-old-space-size=3072"
       - run: yarn install
       - run: yarn build
-      - name: Run tests
-        run: yarn test
-        continue-on-error: true
+      - run: yarn test
       - name: Upload test results to AgileTest
         run: |
           export token=$(curl 'https://kiets-macbook-air.tail305ff.ts.net/api/apikeys/authenticate' -X POST -H 'Content-Type:application/json' --data '{"clientId":"${{ env.CLIENT_ID }}","clientSecret":"${{ env.CLIENT_SECRET }}"}' | tr -d '"')

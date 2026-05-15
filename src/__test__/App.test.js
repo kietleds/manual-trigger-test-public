@@ -1,11 +1,9 @@
-const add = (a, b) => a + b;
+const login = (email, password) => {
+  return email === "admin@gmail.com" && password === "123456";
+};
 
-describe("add function", () => {
-  test(`adds ${1} + ${2}`, () => {
-    expect(add(1, 2)).toBe(3);
-  });
-
-  test(`adds ${3} + ${4}`, () => {
-    expect(add(3, 4)).toBe(7);
+describe("login feature", () => {
+  test("login success", () => {
+    expect(login("admin@gmail.com", "123456")).toBe(true);
   });
 });
